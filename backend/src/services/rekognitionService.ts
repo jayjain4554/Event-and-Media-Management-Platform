@@ -243,7 +243,7 @@ export const matchFacesInPhoto = async (
         let faceMatchScore: number | undefined = undefined;
 
         try {
-          const faceImage = await cropFaceRegion(fileBuffer, box);
+          const faceImage = await cropFaceRegion(fileBuffer, boundingBox);
           const searchCommand = new SearchFacesByImageCommand({
             CollectionId: REKOGNITION_COLLECTION_ID,
             Image: { Bytes: faceImage },
