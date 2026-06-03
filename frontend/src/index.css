@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #f8fafc;
+  --text-color: #0f172a;
+  --text-muted: #475569;
+  --border-color: rgba(15, 23, 42, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --bg-dark-950: #f1f5f9;
+  --bg-dark-800: #e2e8f0;
+  --panel-bg: rgba(241, 245, 249, 0.85);
+}
+
+.dark {
+  --bg-color: #111318;
+  --text-color: #eef0f2;
+  --text-muted: #b8c2cc;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --card-bg: rgba(20, 22, 28, 0.7);
+  --bg-dark-950: #0b0c0f;
+  --bg-dark-800: #1a1f26;
+  --panel-bg: rgba(26, 31, 38, 0.6);
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    @apply font-sans antialiased overflow-x-hidden transition-colors duration-300;
+  }
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--panel-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+}
+
+.glass-panel-hover {
+  @apply transition-all duration-300 hover:border-brand-500/30 hover:shadow-glass-glow;
+}
+
+.glass-input {
+  background: var(--bg-dark-950);
+  border: 1px solid var(--border-color);
+  @apply text-white px-4 py-2 rounded-lg outline-none focus:border-brand-500/50 transition-all duration-200 focus:ring-1 focus:ring-brand-500/30;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111318;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #313841;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0e91eb;
+}
+
+/* Custom animations and layout components */
+.masonry-grid {
+  display: flex;
+  margin-left: -16px; /* gutter size offset */
+  width: auto;
+}
+
+.masonry-grid_column {
+  padding-left: 16px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Shine skeleton loading animation */
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #1a1f26 25%, #313841 50%, #1a1f26 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.6s infinite linear;
+}

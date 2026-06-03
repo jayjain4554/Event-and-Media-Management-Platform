@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  database:
+    image: mongo:latest
+    container_name: eventsphere_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - eventsphere_network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: eventsphere_backend
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - NODE_ENV=production
+      - MONGO_URI=mongodb://database:27017/eventsphere
+      - JWT_SECRET=super_secret_jwt_signing_key_change_me_in_production
+      - JWT_EXPIRES_IN=7d
+    depends_on:
+      - database
+    volumes:
+      - backend_uploads:/usr/src/app/public/uploads
+      - backend_logs:/usr/src/app/logs
+    networks:
+      - eventsphere_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: eventsphere_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - eventsphere_network
+
+networks:
+  eventsphere_network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+  backend_uploads:
+  backend_logs:
