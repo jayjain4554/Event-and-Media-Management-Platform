@@ -73,8 +73,9 @@ export const uploadFile = async (
       const filePath = path.join(localUploadsDir, path.basename(uniqueKey));
       fs.writeFileSync(filePath, fileBuffer);
 
-      const localPort = env.PORT || 5000;
-      const url = `http://localhost:${localPort}/uploads/${path.basename(uniqueKey)}`;
+      const baseUrl = process.env.RENDER_EXTERNAL_URL || 'https://event-and-media-management-platform-1.onrender.com';
+
+      const url = `${process.env.APP_URL}/uploads/${path.basename(uniqueKey)}`;
 
       return { url, key: uniqueKey };
     } catch (error: any) {
