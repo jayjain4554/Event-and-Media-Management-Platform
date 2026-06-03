@@ -4,7 +4,7 @@
   "description": "Enterprise Node.js + TypeScript backend for EventSphere platform",
   "main": "dist/server.js",
   "scripts": {
-    "build": "rimraf dist && tsc",
+    "build": "npx rimraf dist && npx tsc",
     "start": "node dist/server.js",
     "dev": "ts-node-dev --respawn --transpile-only --exit-child src/server.ts"
   },
