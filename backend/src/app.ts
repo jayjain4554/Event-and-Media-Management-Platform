@@ -31,7 +31,7 @@ app.use(helmet({
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://your-vercel-domain.vercel.app'
+    'https://event-and-media-management-platform-three.vercel.app/'
   ], // Customize to frontend domain in production
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
