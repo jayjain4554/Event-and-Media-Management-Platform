@@ -29,7 +29,10 @@ app.use(helmet({
 
 // 2. CORS configuration
 app.use(cors({
-  origin: '*', // Customize to frontend domain in production
+  origin: [
+    'http://localhost:5173',
+    'https://your-vercel-domain.vercel.app'
+  ], // Customize to frontend domain in production
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
