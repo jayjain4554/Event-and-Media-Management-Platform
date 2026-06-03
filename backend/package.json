@@ -28,9 +28,7 @@
     "socket.io": "^4.7.5",
     "winston": "^3.13.0",
     "zod": "^3.23.4",
-    "cloudinary": "^2.7.0"
-  },
-  "devDependencies": {
+    "cloudinary": "^2.7.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
@@ -38,9 +36,14 @@
     "@types/morgan": "^1.9.9",
     "@types/multer": "^1.4.11",
     "@types/node": "^20.12.7",
+    "typescript": "^5.4.5"
+    
+  },
+  "devDependencies": {
+    
     "@types/qrcode": "^1.5.5",
     "rimraf": "^5.0.5",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.4.5"
+    "ts-node-dev": "^2.0.0"
+    
   }
 }
